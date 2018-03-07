@@ -15,7 +15,7 @@ def get_locate(intput_str, output):
     try:
         latitude = _json["results"][0]["geometry"]["location"]["lat"]
         longitude = _json["results"][0]["geometry"]["location"]["lng"]
-    except IndexError:  # 에러 종류
+    except IndexError:  # 만약에 검색이 안되면 0,0 이 되도록함
         latitude = 0
         longitude = 0
     # print(str(latitude)+","+str(longitude))
@@ -47,7 +47,7 @@ for index in oh:
     output = output+index+','
     output = get_locate(index, output)
 print("함수 종료")
-f = open("outupt.csv", 'w')
+f = open("outupt.csv", 'w')  # csv로 출력
 f.write(output)
 f.close()
 print(output)
